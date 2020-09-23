@@ -1,0 +1,428 @@
+{
+  "namespace": "select_skin_astral",
+
+  "skin_panel_template": {
+    "type": "panel",
+    "size": [ 40, "100%" ],
+    "max_size": [ "25%", "100%" ],
+    "controls": [
+      {
+        "skin_model": {
+          "type": "custom",
+          "size": [ 70, 70 ],
+          "offset": [ 0, -5 ],
+          "renderer": "paper_doll_renderer",
+          "layer": 10,
+          "$skin_property_bag|default": 1,
+          "use_selected_skin": false,
+          "property_bag": {
+            "#preview_idx": "$skin_property_bag"
+          },
+          "$preset_gesture_source_control_name": "main_preset_persona",
+          "$preset_appearance_binding_name": "#appearance_preset_preview",
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_name": "$preset_appearance_binding_name",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "$preset_gesture_source_control_name",
+              "source_property_name": "#gesture_delta_source",
+              "target_property_name": "#gesture_delta_source"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "$preset_gesture_source_control_name",
+              "source_property_name": "#gesture_mouse_delta_x",
+              "target_property_name": "#gesture_mouse_delta_x"
+            },
+            {
+              "binding_name": "#is_preset_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "add_button_input": {
+          "type": "input_panel",
+          "size": [ "100%", "100%" ],
+          "controls": [
+            {
+              "add_button": {
+                "type": "image",
+                "texture": "textures/uiastral/add_new_character_icon",
+                "layer": 5,
+                "size": [ 18, 18 ]
+              }
+            }
+          ],
+          "property_bag": {
+            "#preview_idx": "$skin_property_bag"
+          },
+          "bindings": [
+            {
+              "binding_name": "#is_preset_add_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "#appearance_preset_preview",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "#appearance_preset_preview",
+              "mapping_type": "focused"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "persona_main_preset_panel": {
+    "type": "input_panel",
+    "size": [ 50, "100%" ],
+    "gesture_tracking_button": "button.turn_doll",
+    "always_handle_controller_direction": true,
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.turn_doll",
+        "mapping_type": "pressed",
+        "button_up_right_of_first_refusal": true
+      }
+    ],
+    "controls": [
+      {
+        "skin_model": {
+          "type": "custom",
+          "size": [ 80, 80 ],
+          "offset": [ 0, -5 ],
+          "renderer": "paper_doll_renderer",
+          "layer": 3,
+          "property_bag": {
+            "#preview_idx": 3
+          },
+          "bindings": [
+            {
+              "binding_name": "#is_preset_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "global",
+              "binding_name": "#appearance_preset_preview",
+              "binding_condition": "always"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "persona_main_preset_panel",
+              "source_property_name": "#gesture_delta_source",
+              "target_property_name": "#gesture_delta_source"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "persona_main_preset_panel",
+              "source_property_name": "#gesture_mouse_delta_x",
+              "target_property_name": "#gesture_mouse_delta_x"
+            }
+          ]
+        }
+      },
+      {
+        "add_button_input": {
+          "type": "input_panel",
+          "anchor_from": "center",
+          "anchor_to": "center",
+          "size": [ 36, 36 ],
+          "controls": [
+            {
+              "add_button": {
+                "type": "image",
+                "texture": "textures/uiastral/add_new_character_icon",
+                "layer": 5,
+                "size": [ 18, 18 ]
+              }
+            }
+          ],
+          "property_bag": {
+            "#preview_idx": 3
+          },
+          "bindings": [
+            {
+              "binding_name": "#is_preset_add_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "button.addAppearance",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "button.addAppearance",
+              "mapping_type": "focused"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "skins_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "top_middle",
+    "anchor_to": "top_middle",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "left_padding": {
+          "type": "panel",
+          "size": [ "fill", "100%" ]
+        }
+      },
+      {
+        "skin_panel_template_0@select_skin_astral.skin_panel_template": {
+          "$skin_property_bag": 1
+        }
+      },
+      {
+        "padding_0": {
+          "type": "panel",
+          "size": [ "fill", "100%" ]
+        }
+      },
+      {
+        "skin_panel_template_1@select_skin_astral.skin_panel_template": {
+          "$skin_property_bag": 2
+        }
+      },
+      {
+        "padding_1": {
+          "type": "panel",
+          "size": [ "fill", "100%" ]
+        }
+      },
+      {
+        "left_button_panel": {
+          "type": "panel",
+          "size": [ 24, "100%" ],
+          "controls": [
+            { 
+              "left_arrow_button@common_buttons_astral.main_button": {
+                "size": [ 20, 20 ],
+                "$button_content": "astral_textures_common.astral_previous_icon",
+                "$pressed_button_name": "button.pressedArrowLeft",
+                "bindings": [
+                  {
+                    "binding_name": "#arrow_left_enabled",
+                    "binding_name_override": "#visible",
+                    "binding_condition": "always"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "padding_2": {
+          "type": "panel",
+          "size": [ 4, "100%" ]
+        }
+      },
+      { "persona_main_preset_panel@select_skin_astral.persona_main_preset_panel": { } },
+      {
+        "padding_3": {
+          "type": "panel",
+          "size": [ 4, "100%" ]
+        }
+      },
+      {
+        "right_button_panel": {
+          "type": "panel",
+          "size": [ 24, "100%" ],
+          "controls": [
+            { 
+              "right_arrow_button@common_buttons_astral.main_button": {
+                "size": [ 20, 20 ],
+                "$button_content": "astral_textures_common.astral_next_icon",
+                "$pressed_button_name": "button.pressedArrowRight",
+                "bindings": [
+                  {
+                    "binding_name": "#arrow_right_enabled",
+                    "binding_name_override": "#visible",
+                    "binding_condition": "always"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "padding_4": {
+          "type": "panel",
+          "size": [ "fill", "100%" ]
+        }
+      },
+      {
+        "skin_panel_template_0@select_skin_astral.skin_panel_template": {
+          "$skin_property_bag": 4
+        }
+      },
+      {
+        "padding_5": {
+          "type": "panel",
+          "size": [ "fill", "100%" ]
+        }
+      },
+      {
+        "skin_panel_template_1@select_skin_astral.skin_panel_template": {
+          "$skin_property_bag": 5
+        }
+      },
+      {
+        "right_padding": {
+          "type": "panel",
+          "size": [ "fill", "100%" ]
+        }
+      }
+    ]
+  },
+  
+  "main_panel@astral_textures_common.main_panel": {
+    "size": [ 312, 132 ],
+    "layer": 1,
+    "controls": [
+      { 
+        "title_text@start_astral.astral_text": {
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 10 ],
+          "text": "Select Character"
+        }
+      },
+      { "skins_panel@select_skin_astral.skins_panel": { } },
+      { "bottom_buttons@select_skin_astral.bottom_buttons": { } }
+    ]
+  },
+
+  "bottom_buttons": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ 0, 25 ],
+    "size": [ "100%c", 17 ],
+    "controls": [
+      {
+        "back_button@common_buttons_astral.main_button": {
+          "size": [ 50, 17 ],
+          "$button_text": "B A C K",
+          "$pressed_button_name": "button.try_exiting"
+        }
+      },
+      { "panel_0": { "type": "panel", "size": [ 3, 20 ] } },
+      {
+        "create_button@common_buttons_astral.main_button": {
+          "size": [ 50, 17 ],
+          "$button_text": "C R E A T E",
+          "$pressed_button_name": "button.edit_appearance_preset",
+          "property_bag": {
+            "#preview_idx": 3
+          },
+          "bindings": [
+            {
+              "binding_name": "#is_preset_add_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "edit_button@common_buttons_astral.main_button": {
+          "size": [ 50, 17 ],
+          "$button_text": "E D I T",
+          "$pressed_button_name": "button.edit_appearance_preset",
+          "property_bag": {
+            "#preview_idx": 3
+          },
+          "bindings": [
+            {
+              "binding_name": "#is_preset_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      { 
+        "panel_1": {
+          "type": "panel",
+          "size": [ 3, 17 ],
+          "property_bag": {
+            "#preview_idx": 3
+          },
+          "bindings": [
+            {
+              "binding_name": "#is_preset_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      },
+      {
+        "delete_button@common_buttons_astral.red_button": {
+          "size": [ 50, 17 ],
+          "$button_text": "D E L E T E",
+          "$pressed_button_name": "button.delete_appearance_preset",
+          "property_bag": {
+            "#preview_idx": 3
+          },
+          "bindings": [
+            {
+              "binding_name": "#is_preset_visible",
+              "binding_name_override": "#visible",
+              "binding_condition": "always"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "select_skin_panel": {
+    "type": "panel",
+    "controls": [
+      { "text_panel@start_astral.text_panel": { } },
+      { "main_panel@select_skin_astral.main_panel": { } },
+      {
+        "popup_dialog_factory": {
+          "type": "factory",
+          "control_ids": {
+            "no_store_connection": "@common_store.popup_dialog__no_store_connection",
+            "restore_popup": "@common_store.popup_dialog__restore_popup",
+            "restore_failed": "@common_store.popup_dialog__restore_failed",
+            "toast_message": "@profile.popup_toast",
+            "delete_persona": "@profile.popup_dialog__delete_persona"
+          }
+        }
+      }
+    ]
+  }
+}

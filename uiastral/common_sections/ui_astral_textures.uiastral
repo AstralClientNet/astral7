@@ -1,0 +1,255 @@
+{
+  "namespace": "astral_textures_common",
+
+  /*//// Title and Logo ////*/
+
+  "astral_logo": {
+    "type": "image",
+    "size": [ 70, 70 ],
+    "texture": "textures/uiastral/astral_logo",
+    "controls": [
+      { 
+        "star_1@animated_textures_astral.astral_animated_star_2": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "uv": "@animated_textures_astral.1_00",
+          "offset": [ 47, 23 ]
+        }
+      },
+      { 
+        "star_2@animated_textures_astral.astral_animated_star_2": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "uv": "@animated_textures_astral.1_06",
+          "offset": [ 58, 33.5 ]
+        }
+      },
+      { 
+        "star_3@animated_textures_astral.astral_animated_star_2": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "uv": "@animated_textures_astral.1_15",
+          "offset": [ 7, 19.5 ]
+        }
+      },
+      { 
+        "star_4@animated_textures_astral.astral_animated_star_2": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "uv": "@animated_textures_astral.1_03",
+          "offset": [ 31, 54 ]
+        }
+      },
+      { 
+        "star_5@animated_textures_astral.astral_animated_star_3": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "uv": "@animated_textures_astral.1_18",
+          "offset": [ 15, 43 ]
+        }
+      },
+      { 
+        "star_6@animated_textures_astral.astral_animated_star_3": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "uv": "@animated_textures_astral.1_12",
+          "offset": [ 51.5, 43 ]
+        }
+      },
+      { 
+        "star_7@animated_textures_astral.astral_animated_star_1": {
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "uv": "@animated_textures_astral.1_09",
+          "offset": [ 21.5, 9 ]
+        }
+      }
+    ]
+  },
+
+  "astral_title": {
+    "type": "image",
+    "size": [ 90, 12 ],
+    "texture": "textures/uiastral/astral_title"
+  },
+
+  "astral_title_bottom_right": {
+    "type": "image",
+    "size": [ 113, 32 ],
+    "layer": 2,
+    "anchor_to": "bottom_right",
+    "anchor_from": "bottom_right",
+    "texture": "textures/uiastral/astral_title_bottom_right"
+  },
+
+  /*//// Cosmetics ////*/
+
+  "rarity_common_panel": {
+    "type": "image",
+    "size": [ "100%", "100%" ],
+    "texture": "textures/uiastral/rarity_common_panel"
+  },
+
+  "rarity_uncommon_panel@astral_textures_common.rarity_common_panel": {
+    "texture": "textures/uiastral/rarity_uncommon_panel"
+  },
+
+  "rarity_rare_panel@astral_textures_common.rarity_common_panel": {
+    "texture": "textures/uiastral/rarity_rare_panel"
+  },
+
+  "rarity_epic_panel@astral_textures_common.rarity_common_panel": {
+    "texture": "textures/uiastral/rarity_epic_panel"
+  },
+
+  "rarity_legendary_panel@astral_textures_common.rarity_common_panel": {
+    "texture": "textures/uiastral/rarity_legendary_panel"
+  },
+
+  "cosmetic_piece_panel@astral_textures_common.rarity_common_panel": {
+    "texture": "textures/uiastral/cosmetic_piece_panel"
+  },
+
+  "cosmetic_piece_selected@astral_textures_common.rarity_common_panel": {
+    "texture": "textures/uiastral/cosmetic_piece_selected"
+  },
+
+  "cosmetic_piece_equipped@astral_textures_common.rarity_common_panel": {
+    "texture": "textures/uiastral/cosmetic_piece_equipped"
+  },
+
+  /*//// Panels ////*/
+
+  "main_panel": {
+    "type": "image",
+    "texture": "textures/uiastral/main_panel"
+  },
+
+  "main_scroll_box": {
+    "type": "image",
+    "texture": "textures/uiastral/main_scroll_box"
+  },
+
+  "main_scroll_track": {
+    "type": "image",
+    "texture": "textures/uiastral/main_scroll_track"
+  },
+
+  /*//// Icons ////*/
+
+  "astral_creator_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_creator_icon"
+  },
+
+  "astral_skins_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_skins_icon"
+  },
+
+  "astral_load_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_load_icon"
+  },
+
+  "astral_down_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_down_icon"
+  },
+
+  "astral_up_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_up_icon"
+  },
+
+  "astral_add_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_add_icon"
+  },
+
+  "astral_achievement_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_achievement_icon"
+  },
+
+  "astral_play_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_play_icon"
+  },
+
+  "astral_none_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_none_icon"
+  },
+
+  "astral_color_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_color_icon"
+  },
+
+  "astral_previous_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_previous_icon"
+  },
+
+  "astral_next_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_next_icon"
+  },
+
+  "astral_cosmetics_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_cosmetics_icon"
+  },
+
+  "astral_close_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_close_icon"
+  },
+
+  "astral_options_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_options_icon"
+  },
+
+  "astral_store_icon": {
+    "type": "image",
+    "size": [ 20, 20 ],
+    "texture": "textures/uiastral/astral_store_icon"
+  },
+
+  /*//// Buttons ////*/
+
+  "main_button_default": {
+    "type": "image",
+    "size": [ "100%", "100%" ],
+    "texture": "textures/uiastral/main_button_default"
+  },
+
+  "main_button_hover@astral_textures_common.main_button_default": {
+    "texture": "textures/uiastral/main_button_hover"
+  },
+
+  "red_button_default@astral_textures_common.main_button_default": {
+    "texture": "textures/uiastral/red_button_default"
+  },
+
+  "red_button_hover@astral_textures_common.main_button_default": {
+    "texture": "textures/uiastral/red_button_hover"
+  }
+}

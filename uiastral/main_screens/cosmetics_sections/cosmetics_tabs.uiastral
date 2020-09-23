@@ -1,0 +1,62 @@
+{
+  "namespace": "cosmetics_tabs_astral",
+
+  "button_tab@common_toggles_astral.toggle_panel": {
+    "size": [ 47, 17 ],
+    "$radio_toggle_group": true,
+    "$toggle_name": "navigation_tab",
+    "$toggle_group_default_selected": "$default_tab",
+
+    "$unchecked_control": "common_buttons_astral.default",
+    "$checked_control": "common_buttons_astral.hover",
+    "$unchecked_hover_control": "common_buttons_astral.hover",
+    "$checked_hover_control": "common_buttons_astral.hover"
+  },
+
+  "create_tab@cosmetics_tabs_astral.button_tab": {
+    "size": [ 22, 17 ],
+    "$tab_view_binding_name": "customization_tab_toggle",
+    "$button_content": "astral_textures_common.astral_creator_icon",
+    "$toggle_group_forced_index": 0
+  },
+
+  "skins_tab@cosmetics_tabs_astral.button_tab": {
+    "size": [ 22, 17 ],
+    "$tab_view_binding_name": "skins_tab_toggle",
+    "$button_content": "astral_textures_common.astral_skins_icon",
+    "$toggle_group_forced_index": 1
+  },
+
+  "emotes_tab@cosmetics_tabs_astral.button_tab": {
+    "$tab_view_binding_name": "animations_tab_toggle",
+    "$button_text": "E M O T E S",
+    "$toggle_group_forced_index": 2
+  },
+
+  "cloaks_tab@cosmetics_tabs_astral.button_tab": {
+    "$tab_view_binding_name": "capes_tab_toggle",
+    "$button_text": "C L O A K S",
+    "$toggle_group_forced_index": 3
+  },
+
+  "tab_buttons": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ "100%c", 17 ],
+    "controls": [
+      { "create_tab@cosmetics_tabs_astral.create_tab": { } },
+      { "panel_0": { "type": "panel", "size": [ 3, 17 ] } },
+      { "skins_tab@cosmetics_tabs_astral.skins_tab": { } },
+      { "panel_1": { "type": "panel", "size": [ 3, 17 ] } },
+      { "emotes_tab@cosmetics_tabs_astral.emotes_tab": { } },
+      { "panel_2": { "type": "panel", "size": [ 3, 17 ] } },
+      { "cloaks_tab@cosmetics_tabs_astral.cloaks_tab": { } }
+    ],
+    "bindings": [
+      {
+        "binding_name": "#dressing_room_tabs_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "namespace": "cosmetics_cloaks_astral",
+
+  "cloaks_grid_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "bindings": [
+      {
+        "binding_name": "#is_cape_selection_visible",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "cloaks_piece_offer_grid": {
+          "type": "grid",
+          "size": [ "100%", "100%c" ],
+
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+
+          "grid_dimension_binding": "#cape_count",
+          "grid_rescaling_type": "horizontal",
+          "grid_item_template": "cosmetics_astral.cosmetics_piece_offer",
+          "$pressed_button_function": "button.apply_cape",
+          "$persona_piece_prefix|default": "cape",
+          "$persona_piece_binding_type|default": "collection",
+          "$persona_piece_collection_details|default": "collection_details",
+          "$persona_piece_collection_name|default": "cape_collection",
+          "collection_name": "$persona_piece_collection_name",
+          "bindings": [
+            {
+              "binding_name": "#cape_count",
+              "binding_name_override": "#maximum_grid_items"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

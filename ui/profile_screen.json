@@ -1,0 +1,11 @@
+{
+  "profile_screen": {
+    "$screen_content": "select_skin_astral.select_skin_panel",
+    "$screen_bg_content": "common.empty_panel",
+    "$header_safezone_control": "common.empty_panel",
+    "$header_bar_control": "common.empty_panel",
+    "$is_full_screen_layout": false,
+    "$screen_animations": [ ],
+    "$background_animations": [ ]
+  }
+}

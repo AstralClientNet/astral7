@@ -1,0 +1,477 @@
+{
+  "namespace": "cosmetics_create_astral",
+
+  /*//// Dropdown Button ////*/
+
+  "dropdown_content": {
+    "type": "panel",
+    "controls": [
+      {
+        "base_label@common_buttons_astral.button_label": {
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "layer": 4,
+          "offset": [ 7, 0 ],
+          "text": "$content_label_binding_name",
+          "$content_label_image_collection_name|default": "",
+          "bindings": [
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "$content_label_image_collection_name",
+              "binding_name": "$content_label_binding_name"
+            }
+          ]
+        }
+      },
+      { 
+        "astral_down_icon@$right_icon_texture": {
+          "offset": [ 1.5, 0 ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle"
+        }
+      }
+    ]
+  },
+
+  "unchecked_button@common_buttons_astral.main_button": {
+    "size": [ "100%", 16 ],
+    "$right_icon_texture": "astral_textures_common.astral_down_icon",
+    "$button_content": "cosmetics_create_astral.dropdown_content",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$pressed_button_name",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$pressed_button_name",
+        "mapping_type": "focused"
+      },
+      {
+        "to_button_id": "$hover_button_name",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+
+  "checked_button@common_buttons_astral.main_button": {
+    "size": [ "100%", 16 ],
+    "$right_icon_texture": "astral_textures_common.astral_up_icon",
+    "$button_content": "cosmetics_create_astral.dropdown_content",
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "$pressed_button_name",
+        "mapping_type": "pressed"
+      },
+      {
+        "from_button_id": "button.menu_ok",
+        "to_button_id": "$pressed_button_name",
+        "mapping_type": "focused"
+      },
+      {
+        "to_button_id": "$hover_button_name",
+        "mapping_type": "pressed"
+      }
+    ]
+  },
+
+  /*//// Sections ////*/
+
+  "persona_category_section": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "bindings": [
+      {
+        "binding_name": "#is_category_section_visible",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "persona_category_factory": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+
+          "orientation": "vertical",
+
+          "$store_factory_clipping_event": "category factory_section_shown",
+
+          "$category_collection_prefix": "category",
+          "$category_collection_name": "category_collection",
+
+          "factory": {
+            "name": "store_section_factory",
+            "control_ids": {
+              "category_content": "@cosmetics_create_astral.category_content"
+            },
+            "factory_variables": [
+              "$category_collection_prefix",
+              "$category_collection_name"
+            ]
+          },
+
+          "collection_name": "$category_collection_name",
+
+          "bindings": [
+            {
+              "binding_name": "#category_section_content",
+              "binding_name_override": "#collection_length"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "category_content": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "controls": [
+      {
+        "main_panel": {
+          "type": "stack_panel",
+          "orientation": "vertical",
+          "size": [ "100%", "100%c" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "controls": [
+            {
+              "selected_panel": {
+                "type": "panel",
+                "size": [ "100%", 18.5 ],
+                "bindings": [
+                  {
+                    "binding_type": "collection",
+                    "binding_collection_name": "$category_collection_name",
+                    "binding_name": "#is_select_category_button_visible",
+                    "binding_name_override": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "selected_button@cosmetics_create_astral.unchecked_button": {
+                      "size": [ "100%", 16 ],
+                      "$content_label_binding_name": "#category_title",
+                      "$pressed_button_name": "button.category_selected",
+                      "$content_label_image_collection_name": "$category_collection_name",
+                      "$category_button_visible_binding": "#is_select_category_button_visible",
+                      "bindings": [
+                        {
+                          "binding_type": "collection_details",
+                          "binding_collection_name": "$category_collection_name",
+                          "binding_collection_prefix": "$category_collection_prefix"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "un_selected_panel": {
+                "type": "panel",
+                "size": [ "100%", 18.5 ],
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "selected_panel",
+                    "source_property_name": "(not #visible)",
+                    "target_property_name": "#visible",
+                    "resolve_sibling_scope": true
+                  }
+                ],
+                "controls": [
+                  {
+                    "un_selected_button@cosmetics_create_astral.checked_button": {
+                      "size": [ "100%", 16 ],
+                      "$content_label_binding_name": "#category_title",
+                      "$pressed_button_name": "button.category_unselected",
+                      "$content_label_image_collection_name": "$category_collection_name",
+                      "bindings": [
+                        {
+                          "binding_type": "collection_details",
+                          "binding_collection_name": "$category_collection_name",
+                          "binding_collection_prefix": "$category_collection_prefix"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "subcategory_grid_panel": {
+                "type": "panel",
+                "size": [ "100%", "100%c" ],
+                "bindings": [
+                  {
+                    "binding_type": "view",
+                    "source_control_name": "un_selected_panel",
+                    "source_property_name": "#visible",
+                    "target_property_name": "#visible",
+                    "resolve_sibling_scope": true
+                  }
+                ],
+                "controls": [
+                  {
+                    "subcategory_grid": {
+                      "type": "grid",
+                      "size": [ "100%", "100%c" ],
+                      "anchor_from": "center",
+                      "anchor_to": "center",
+      
+                      "$subcategory_collection_prefix|default": "subcategory",
+                      "$subcategory_collection_name|default": "subcategory_collection",
+                      "$subcategory_button_focus_id": "subcategory_button",
+      
+                      "$subcategory_dimension_binding": "#subcategory_dimension_binding",
+                      "grid_dimension_binding": "$subcategory_dimension_binding",
+                      "grid_item_template": "cosmetics_create_astral.persona_subcategory_button",
+                      "collection_name": "$subcategory_collection_name",
+      
+                      "bindings": [
+                        {
+                          "binding_name": "$subcategory_dimension_binding"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "persona_subcategory_button@common.button": {
+    "size": [ "100%", 18.5 ],
+    "$pressed_button_name": "button.subcategory_selected",
+    "$hover_button_name": "button.subcategory_button_hovered",
+    "$label_control": "persona_panel_content.content_label_panel",
+    "$base_offset": [ 0, 0 ],
+
+    "$category_collection_name": "$subcategory_collection_name",
+
+    "$content_label_image_binding_type": "collection",
+    "$content_label_image_collection_name": "$subcategory_collection_name",
+    "$content_label_binding_name": "#subcategory_title",
+    "$content_image_binding_name": "#subcategory_image",
+    "$content_image_is_dynamic": true,
+
+    "bindings": [
+      {
+        "binding_type": "collection_details",
+        "binding_collection_name": "$subcategory_collection_name",
+        "binding_collection_prefix": "$subcategory_collection_prefix"
+      }
+    ],
+    "controls": [
+      {
+        "button_content": {
+          "type": "panel",
+          "controls": [
+            {
+              "subcategory_label@common_buttons_astral.button_label": {
+                "layer": 6,
+                "anchor_from": "left_middle",
+                "anchor_to": "left_middle",
+                "offset": [ 7, 0 ],
+                "text": "$content_label_binding_name",
+                "bindings": [
+                  {
+                    "binding_type": "collection",
+                    "binding_collection_name": "$content_label_image_collection_name",
+                    "binding_name": "$content_label_binding_name"
+                  }
+                ]
+              }
+            },
+            {
+              "icon": {
+                "type": "image",
+                "layer": 6,
+                "texture": "$content_image_binding_name",
+                "bindings": "$content_image_bindings",
+                "offset": [ 0, 0 ],
+                "anchor_from": "right_middle",
+                "anchor_to": "right_middle",
+                "size": [ 15, 14 ],
+                "variables": [
+                  {
+                    "requires": "$content_image_is_dynamic",
+                    "$content_image_bindings": [
+                      {
+                        "binding_type": "$content_label_image_binding_type",
+                        "binding_collection_name": "$content_label_image_collection_name",
+                        "binding_name": "$content_image_binding_name",
+                        "binding_name_override": "#texture"
+                      },
+                      {
+                        "binding_type": "$content_label_image_file_system_binding_type",
+                        "binding_collection_name": "$content_label_image_collection_name",
+                        "binding_name": "$content_image_binding_system",
+                        "binding_name_override": "#texture_file_system"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "hover": {
+          "type": "image",
+          "texture": "textures/uiastral/white",
+          "alpha": 0.5,
+          "layer": 2,
+          "size": [ "100%", "100%" ]
+        }
+      }
+    ]
+  },
+
+  "piece_grid_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "bindings": [
+      {
+        "binding_name": "#is_piece_section_visible",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "not_sizing_panel": {
+          "type": "panel",
+          "size": [ "100%", "100%c" ],
+          "bindings": [
+            {
+              "binding_name": "(not #sizing_options_on)",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "normal_pieces": {
+                "type": "panel",
+                "size": [ "100%", "100%c" ],
+                "bindings": [
+                  {
+                    "binding_name": "(not #show_color_picker)",
+                    "binding_name_override": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "emotes_piece_offer_grid@persona.persona_piece_offer_grid": {
+                      "size": [ "100%", "100%c" ],
+            
+                      "anchor_from": "top_left",
+                      "anchor_to": "top_left",
+            
+                      "offset": [ 0, 0 ],
+                      "grid_item_template": "cosmetics_astral.cosmetics_piece_offer"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "create_right_panel": {
+    "type": "panel",
+    "bindings": [
+      {
+        "binding_name": "#is_piece_section_visible",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      { 
+        "none_button@cosmetics_astral.none_button": {
+          "size": [ 22, 17 ],
+          "offset": [ -20, 10 ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "bindings": [
+            {
+              "binding_name": "#is_none_option_enabled",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { 
+        "color_button@cosmetics_astral.color_button": {
+          "size": [ 22, 17 ],
+          "offset": [ -20, 30 ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "bindings": [
+            {
+              "binding_name": "#skin_color_option_on",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "object_name_text": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%c", 11 ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [ 0, -20 ],
+          "controls": [
+            { 
+              "name_text@start_astral.astral_text": {
+                "size": [ "default", 11 ],
+                "text": "#right_panel_title",
+                "font_scale_factor": 1.0,
+                "bindings": [
+                  {
+                    "binding_name": "#right_panel_title"
+                  }
+                ]
+              }
+            },
+            { 
+              "separator_text@start_astral.astral_text": {
+                "size": [ "default", 11 ],
+                "text": " - ",
+                "font_scale_factor": 1.0
+              }
+            },
+            { 
+              "rarity_text@start_astral.astral_text": {
+                "size": [ "default", 11 ],
+                "text": "#right_panel_title_rarity",
+                "font_scale_factor": 1.0,
+                "bindings": [
+                  {
+                    "binding_name": "#right_panel_title_rarity"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

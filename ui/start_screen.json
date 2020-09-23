@@ -1,0 +1,6 @@
+﻿{
+  "start_screen": {
+    "$screen_content": "start_astral.center_screen",
+    "$screen_bg_content": "start_astral.full_screen"
+  }
+}

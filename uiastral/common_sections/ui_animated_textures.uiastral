@@ -1,0 +1,59 @@
+{
+  "namespace": "animated_textures_astral",
+
+  "astral_animated_star_1": {
+    "type": "image",
+    "size": [ 10, 10 ],
+    "uv_size": [ 64, 64 ],
+    "texture": "textures/uiastral/astral_animated_star"
+  },
+
+  "astral_animated_star_2": {
+    "type": "image",
+    "size": [ 8, 8 ],
+    "uv_size": [ 64, 64 ],
+    "texture": "textures/uiastral/astral_animated_star"
+  },
+
+  "astral_animated_star_3": {
+    "type": "image",
+    "size": [ 6, 6 ],
+    "uv_size": [ 64, 64 ],
+    "texture": "textures/uiastral/astral_animated_star"
+  },
+
+  "anim_uv_base": {
+    "anim_type": "uv",
+    "from": "$uv_frame",
+    "to": "$uv_frame",
+    "duration": 0.05
+  },
+
+  /*//// Anim Frames ////*/
+
+  "anim_wait": {
+    "anim_type": "wait",
+    "duration": 5,
+    "next": "@animated_textures_astral.1_01"
+  },
+    
+  "1_00@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 0    ], "next": "@animated_textures_astral.anim_wait" },
+  "1_01@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 64   ], "next": "@animated_textures_astral.1_02" },
+  "1_02@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 128  ], "next": "@animated_textures_astral.1_03" },
+  "1_03@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 192  ], "next": "@animated_textures_astral.1_04" },
+  "1_04@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 256  ], "next": "@animated_textures_astral.1_05" },
+  "1_05@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 320  ], "next": "@animated_textures_astral.1_06" },
+  "1_06@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 384  ], "next": "@animated_textures_astral.1_07" },
+  "1_07@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 448  ], "next": "@animated_textures_astral.1_08" },
+  "1_08@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 512  ], "next": "@animated_textures_astral.1_09" },
+  "1_09@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 576  ], "next": "@animated_textures_astral.1_10" },
+  "1_10@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 576  ], "next": "@animated_textures_astral.1_11" },
+  "1_11@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 512  ], "next": "@animated_textures_astral.1_12" },
+  "1_12@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 448  ], "next": "@animated_textures_astral.1_13" },
+  "1_13@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 320  ], "next": "@animated_textures_astral.1_14" },
+  "1_14@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 320  ], "next": "@animated_textures_astral.1_15" },
+  "1_15@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 256  ], "next": "@animated_textures_astral.1_16" },
+  "1_16@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 192  ], "next": "@animated_textures_astral.1_17" },
+  "1_17@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 128  ], "next": "@animated_textures_astral.1_18" },
+  "1_18@animated_textures_astral.anim_uv_base": { "$uv_frame": [ 0, 64   ], "next": "@animated_textures_astral.1_00" }
+}

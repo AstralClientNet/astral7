@@ -1,0 +1,973 @@
+{
+  "namespace": "cosmetics_astral",
+
+  "cosmetics_piece_offer": {
+    "type": "panel",
+    "size": [ 25, 37 ],
+    "controls": [
+      {
+        "piece_offer_button@persona.piece_offer_button": {
+          "size": [ 22, 34 ],
+          "$button_content": "cosmetics_astral.piece_offer_button_content",
+          "$button_content_size": [ 20, 32 ],
+          "$pressed_button_name": "$pressed_button_function",
+          "$primary_collection_name": "piece_collection",
+          "controls": [
+            {
+              "button_controls": {
+                "type": "panel",
+                "visible": true,
+                "$loading_bindings|default": [],
+                "variables": [
+                  {
+                    "requires": "$hide_while_loading",
+                    "$loading_bindings": [
+                      {
+                        "binding_type": "view",
+                        "source_control_name": "progress_loading",
+                        "source_property_name": "(not #visible)",
+                        "target_property_name": "#visible",
+                        "resolve_sibling_scope": true
+                      }
+                    ]
+                  }
+                ],
+                "bindings": "$loading_bindings",
+                "controls": [
+                  { "default@common.empty_panel": {} },
+                  {
+                    "pressed@astral_textures_common.cosmetic_piece_selected": {
+                      "layer": 9
+                    }
+                  },
+                  {
+                    "content@$button_content": {
+                      "layer": 2
+                    }
+                  },
+                  {
+                    "equipped@astral_textures_common.cosmetic_piece_equipped": {
+                      "ignored": "$ignore_piece_selected",
+                      "layer": 10,
+                      "bindings": [
+                        {
+                          "binding_type": "collection",
+                          "binding_collection_name": "$persona_piece_collection_name",
+                          "binding_name": "#is_piece_equipped",
+                          "binding_name_override": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "selected@astral_textures_common.cosmetic_piece_selected": {
+                      "ignored": "$ignore_piece_selected",
+                      "layer": 8,
+                      "bindings": [
+                        {
+                          "binding_type": "collection",
+                          "binding_collection_name": "$persona_piece_collection_name",
+                          "binding_name": "#is_piece_selected",
+                          "binding_name_override": "#visible"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "previewed@astral_textures_common.cosmetic_piece_selected": {
+                      "ignored": "$ignore_piece_selected",
+                      "layer": 8,
+                      "bindings": [
+                        {
+                          "binding_type": "collection",
+                          "binding_collection_name": "$persona_piece_collection_name",
+                          "binding_name": "#is_piece_being_previewed",
+                          "binding_name_override": "#visible"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "bindings": [
+            {
+              "binding_type": "$persona_piece_collection_details",
+              "binding_collection_name": "$persona_piece_collection_name",
+              "binding_collection_prefix": "$persona_piece_prefix"
+            },
+            {
+              "binding_type": "collection",
+              "binding_collection_name": "$persona_piece_collection_name",
+              "binding_name": "#is_piece_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "piece_offer_button_content": {
+    "type": "panel",
+    "$is_featured|default": false,
+    "property_bag": {
+      "#is_featured": "$is_featured"
+    },
+    "controls": [
+      {
+        "piece_offer_item@persona_common.item_display": {
+          "$item_content_control": "persona.persona_offer_state_info",
+          "$item_binding_type": "$persona_piece_binding_type",
+          "$item_collection_name": "$persona_piece_collection_name",
+          "$item_texture_file_system_binding_name": "#thumbnail_texture_file_system",
+          "$item_texture_path_binding_name": "#thumbnail_texture_path",
+          "$is_loading": false,
+          "controls": [
+            {
+              "item_image": {
+                "type": "image",
+                "layer": 2,
+                "size": [ "100% - 2px", "100% - 2px" ],
+                "bindings": [
+                  {
+                    "binding_type": "$item_binding_type",
+                    "binding_collection_name": "$item_collection_name",
+                    "binding_name": "$item_texture_file_system_binding_name",
+                    "binding_name_override": "#texture_file_system"
+                  },
+                  {
+                    "binding_type": "$item_binding_type",
+                    "binding_collection_name": "$item_collection_name",
+                    "binding_name": "$item_texture_path_binding_name",
+                    "binding_name_override": "#texture"
+                  }
+                ]
+              }
+            },
+            { "rarity_panel@cosmetics_astral.rarity_panel": { } },
+            {
+              "cosmetic_piece_panel@astral_textures_common.cosmetic_piece_panel": {
+                "size": [ "100%", "100%" ],
+                "bindings": [
+                  {
+                    "binding_type": "$item_binding_type",
+                    "binding_collection_name": "$item_collection_name",
+                    "binding_name": "(not #rarity_bar_visible)",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            },
+            {
+              "extra_control@common.empty_panel": {
+                "layer": 4,
+                "controls": [
+                  { "control_instance@$item_content_control": {} }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "rarity_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      { 
+        "rarity_common_panel@astral_textures_common.rarity_common_panel": {
+          "size": [ "100%", "100%" ],
+          "bindings": [
+            {
+              "binding_name": "(#rarity_bar_texture = 'textures/ui/rarity_common')",
+              "binding_name_override": "#visible",
+              "binding_type": "$item_binding_type",
+              "binding_collection_name": "$item_collection_name"
+            }
+          ]
+        }
+      },
+      { 
+        "rarity_uncommon_panel@astral_textures_common.rarity_uncommon_panel": {
+          "size": [ "100%", "100%" ],
+          "bindings": [
+            {
+              "binding_name": "(#rarity_bar_texture = 'textures/ui/rarity_uncommon')",
+              "binding_name_override": "#visible",
+              "binding_type": "$item_binding_type",
+              "binding_collection_name": "$item_collection_name"
+            }
+          ]
+        }
+      },
+      { 
+        "rarity_rare_panel@astral_textures_common.rarity_rare_panel": {
+          "size": [ "100%", "100%" ],
+          "bindings": [
+            {
+              "binding_name": "(#rarity_bar_texture = 'textures/ui/rarity_rare')",
+              "binding_name_override": "#visible",
+              "binding_type": "$item_binding_type",
+              "binding_collection_name": "$item_collection_name"
+            }
+          ]
+        }
+      },
+      { 
+        "rarity_epic_panel@astral_textures_common.rarity_epic_panel": {
+          "size": [ "100%", "100%" ],
+          "bindings": [
+            {
+              "binding_name": "(#rarity_bar_texture = 'textures/ui/rarity_epic')",
+              "binding_name_override": "#visible",
+              "binding_type": "$item_binding_type",
+              "binding_collection_name": "$item_collection_name"
+            }
+          ]
+        }
+      },
+      { 
+        "rarity_legendary_panel@astral_textures_common.rarity_legendary_panel": {
+          "size": [ "100%", "100%" ],
+          "bindings": [
+            {
+              "binding_name": "(#rarity_bar_texture = 'textures/ui/rarity_legendary')",
+              "binding_name_override": "#visible",
+              "binding_type": "$item_binding_type",
+              "binding_collection_name": "$item_collection_name"
+            }
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "binding_type": "$item_binding_type",
+        "binding_collection_name": "$item_collection_name",
+        "binding_name": "#rarity_bar_visible",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "extra_right_panel": {
+    "type": "panel",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "size": [ 111, "100%" ],
+    "layer": 10,
+    "controls": [
+      {
+        "create_top_button": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "(#is_piece_section_visible)",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "not_sizing_panel": {
+                "type": "panel",
+                "bindings": [
+                  {
+                    "binding_name": "(not #sizing_options_on)",
+                    "binding_name_override": "#visible"
+                  }
+                ],
+                "controls": [
+                  {
+                    "create_right_panel@cosmetics_create_astral.create_right_panel": {
+                      "bindings": [
+                        {
+                          "binding_name": "(not #show_color_picker)",
+                          "binding_name_override": "#visible"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      { 
+        "cloaks_right_panel@cosmetics_create_astral.create_right_panel": {
+          "bindings": [
+            {
+              "binding_name": "#is_cape_selection_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { "sizing_right_panel@cosmetics_sizing_astral.sizing_right_panel": { } },
+      { "skins_right_panel@cosmetics_skins_astral.skins_right_panel": { } },
+      { "skin_picker_right_panel@cosmetics_skins_astral.skin_picker_right_panel": { } },
+      { "emotes_right_panel@cosmetics_emotes_astral.emotes_right_panel": { } }
+    ]
+  },
+
+  "skin_model_panel": {
+    "type": "input_panel",
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "size": [ 111, "100%" ],
+    "$skin_control_name|default": "skin_model_panel",
+    "$skin_preview": "#preview_skin",
+    "layer": 4,
+    "gesture_tracking_button": "button.turn_doll",
+    "bindings": [
+      {
+        "binding_name": "#can_paperdoll_rotate",
+        "binding_name_override": "#always_handle_controller_direction",
+        "binding_condition": "always"
+      }
+    ],
+    "button_mappings": [
+      {
+        "from_button_id": "button.menu_select",
+        "to_button_id": "button.turn_doll",
+        "mapping_type": "pressed",
+        "button_up_right_of_first_refusal": true
+      }
+    ],
+    "controls": [
+      { 
+        "hint_text@start_astral.astral_text": {
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [ 0, -8 ],
+          "font_scale_factor": 0.8,
+          "text": "HINT: CLICK TO DRAG"
+        }
+      },
+      {
+        "skin_model": {
+          "type": "custom",
+          "renderer": "paper_doll_renderer",
+          "starting_rotation": 0,
+          "size": [ 100, 100 ],
+          "offset": [ 0, -30 ],
+          "use_selected_skin": false,
+          "use_skin_gui_scale": true,
+          "rotation": "gesture_x",
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_name": "$skin_preview"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "$skin_control_name",
+              "source_property_name": "#gesture_delta_source",
+              "target_property_name": "#gesture_delta_source"
+            },
+            {
+              "binding_type": "view",
+              "source_control_name": "$skin_control_name",
+              "source_property_name": "#gesture_mouse_delta_x",
+              "target_property_name": "#gesture_mouse_delta_x"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "scroll_sections_panel": {
+    "type": "panel",
+    "layer": 20,
+    "controls": [
+      /* Dropbox and normal Buttons */
+      {
+        "persona_category_section": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#is_category_section_visible",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { 
+              "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                "$scrolling_content": "cosmetics_create_astral.persona_category_section"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "classic_skins_panel": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#is_classic_skin_section_visible",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { 
+              "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                "$scrolling_content": "cosmetics_skins_astral.classic_skins_panel"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "emotes_section": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#is_emotes_section_visible",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { 
+              "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                "$scrolling_content": "cosmetics_emotes_astral.emotes_section"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "cloaks_panel": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#is_cape_selection_visible",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { 
+              "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                "$scrolling_content": "cosmetics_cloaks_astral.cloaks_grid_panel"
+              }
+            }
+          ]
+        }
+      },
+      /* Piece Content */
+      {
+        "persona_classic_skin_grid_panel": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#is_skin_picker_section_visible",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { "skins_extra_info@cosmetics_skins_astral.skins_extra_info": { } },
+            { 
+              "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                "size": [ 117, 74 ],
+                "$view_port_size": [ 110, 74 ],
+                "$scrolling_content": "cosmetics_skins_astral.persona_classic_skin_grid_panel"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "no_sizing_grid_panel": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#is_piece_section_visible",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            {
+              "piece_grid_panel": {
+                "type": "panel",
+                "bindings": [
+                  {
+                    "binding_name": "(not #sizing_options_on)",
+                    "binding_name_override": "#visible"
+                  }
+                ],
+                "controls": [
+                  { 
+                    "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                      "$scrolling_content": "cosmetics_create_astral.piece_grid_panel"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sizing_grid_panel": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#sizing_options_on",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { 
+              "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                "$scrolling_content": "cosmetics_sizing_astral.sizing_grid_panel"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "color_panel": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#show_color_picker",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { 
+              "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                "$scrolling_content": "cosmetics_colors_astral.color_panel"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "emotes_panel": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "#is_emote_offer_list_visible",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { 
+              "scrolling_panel@cosmetics_astral.scrolling_panel": {
+                "$scrolling_content": "cosmetics_emotes_astral.emotes_grid_panel"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "top_buttons": {
+    "type": "panel",
+    "size": [ "100%c", 17 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 20, 10 ],
+    "layer": 20,
+    "controls": [
+      { "tab_buttons@cosmetics_tabs_astral.tab_buttons": { } },
+      { 
+        "skins_top_buttons@cosmetics_astral.main_top_buttons": {
+          "bindings": [
+            {
+              "binding_name": "#is_skin_picker_section_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { 
+        "emotes_top_buttons@cosmetics_astral.main_top_buttons": {
+          "bindings": [
+            {
+              "binding_name": "#is_emote_offer_list_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      {
+        "create_top_button": {
+          "type": "panel",
+          "bindings": [
+            {
+              "binding_name": "(#is_piece_section_visible)",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "controls": [
+            { 
+              "create_top_buttons@cosmetics_astral.main_top_buttons": {
+                "bindings": [
+                  {
+                    "binding_name": "(not #show_color_picker)",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            },
+            { 
+              "colors_top_buttons@cosmetics_colors_astral.colors_top_buttons": {
+                "bindings": [
+                  {
+                    "binding_name": "(#show_color_picker)",
+                    "binding_name_override": "#visible"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "main_top_buttons": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ 172, 17 ],
+    "controls": [
+      { "leave_button@cosmetics_astral.leave_button": { } },
+      { 
+        "panel_leg_or_arms": { 
+          "type": "panel",
+          "size": [ 3, 17 ],
+          "bindings": [
+            {
+              "binding_name": "#is_leg_or_arms",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { 
+        "side_selector_panel@cosmetics_astral.side_selector_panel": { 
+          "bindings": [
+            {
+              "binding_name": "#is_leg_or_arms",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { 
+        "panel_0": { 
+          "type": "panel",
+          "size": [ "fill", 17 ]
+        }
+      },
+      { 
+        "collect_achievement_button@cosmetics_astral.collect_achievement_button": {
+          "bindings": [
+            {
+              "binding_name": "#can_collect_achievement_award",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { 
+        "offer_real_money_purchase_button@cosmetics_astral.offer_real_money_purchase_button": {
+          "bindings": [
+            {
+              "binding_name": "#currency_purchase_visible",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { 
+        "panel_1": { 
+          "type": "panel",
+          "size": [ 3, 17 ]
+        }
+      },
+      { 
+        "see_achievement_button@cosmetics_astral.see_achievement_button": {
+          "bindings": [
+            {
+              "binding_name": "#is_achievement_award",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { 
+        "offer_coin_purchase_button@cosmetics_astral.offer_coin_purchase_button": {
+          "bindings": [
+            {
+              "binding_name": "#is_purchasable",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "side_selector_panel": {
+    "type": "panel",
+    "size": [ 47, 17 ],
+    "controls": [
+      {
+        "left_button@common_buttons_astral.main_button": {
+          "size": [ 22, 17 ],
+          "$button_text": "L",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "$pressed_button_name": "button.swap_to_left_limb",
+          "bindings": [
+            {
+              "binding_name": "(not #left_limb_enabled)",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_tab_left",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "global"
+            },
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "focused"
+            }
+          ]
+        }
+      },
+      {
+        "right_button@common_buttons_astral.main_button": {
+          "size": [ 22, 17 ],
+          "$button_text": "R",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "$pressed_button_name": "button.swap_to_right_limb",
+          "bindings": [
+            {
+              "binding_name": "#left_limb_enabled",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_tab_right",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "global"
+            },
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "focused"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "none_button@common_buttons_astral.main_button": {
+    "size": [ 22, 17 ],
+    "$button_content": "astral_textures_common.astral_none_icon",
+    "$pressed_button_name": "button.none_piece_option"
+  },
+
+  "color_button@common_buttons_astral.main_button": {
+    "size": [ 22, 17 ],
+    "$button_content": "astral_textures_common.astral_color_icon",
+    "$pressed_button_name": "button.toggle_skin_color_picker"
+  },
+
+  "leave_button@common_buttons_astral.main_button": {
+    "size": [ 22, 17 ],
+    "$button_content": "astral_textures_common.astral_previous_icon",
+    "$pressed_button_name": "button.try_exiting"
+  },
+
+  "see_achievement_button@common_buttons_astral.main_button": {
+    "size": [ 22, 17 ],
+    "$pressed_button_name": "button.view_achievement",
+    "$button_content": "astral_textures_common.astral_achievement_icon"
+  },
+
+  "collect_achievement_button@common_buttons_astral.main_button": {
+    "size": [ 47, 17 ],
+    "$button_text": "C O L L E C T",
+    "$pressed_button_name": "button.collect_achievement"
+  },
+
+  "offer_coin_purchase_button@common_buttons_astral.main_button": {
+    "size": [ 47, 17 ],
+    "$button_content": "cosmetics_astral.purchase_label",
+    "$pressed_button_name": "button.coin_purchase"
+  },
+
+  "offer_real_money_purchase_button@common_buttons_astral.main_button": {
+    "size": [ 47, 17 ],
+    "$button_text": "#purchase_with_currency_button_text",
+    "$pressed_button_name": "button.real_money_purchase"
+  },
+  
+  "main_panel@astral_textures_common.main_panel": {
+    "size": [ 312, 132 ],
+    "layer": 1,
+    "controls": [
+      { "top_buttons@cosmetics_astral.top_buttons": { } },
+      { "scroll_sections_panel@cosmetics_astral.scroll_sections_panel": { } },
+      { "skin_model_panel@cosmetics_astral.skin_model_panel": { } },
+      { "extra_right_panel@cosmetics_astral.extra_right_panel": { } },
+      { "bottom_buttons@cosmetics_astral.bottom_buttons": { } }
+    ]
+  },
+
+  "scrolling_panel@common_scroll_astral.scrolling_panel": {
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "size": [ 182, 74 ],
+    "offset": [ 18.5, 34.5 ],
+    "$scroll_size": [ 4, "100%" ],
+    "$view_port_size": [ 175, 74 ],
+    "$scrolling_pane_size": [ "100%", "100%" ],
+    "$scrolling_pane_offset": [ 0, 0 ],
+    "$scroll_track_image_control": "astral_textures_common.main_scroll_track",
+    "$scroll_box_mouse_image_control": "astral_textures_common.main_scroll_box",
+    "$scroll_box_touch_image_control": "astral_textures_common.main_scroll_box"
+  },
+
+  "bottom_buttons": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ 0, 25 ],
+    "size": [ "100%c", 17 ],
+    "controls": [
+      {
+        "back_button@common_buttons_astral.main_button": {
+          "size": [ 50, 17 ],
+          "$button_text": "B A C K",
+          "$pressed_button_name": "button.menu_exit"
+        }
+      },
+      { 
+        "panel_0": {
+          "type": "panel",
+          "size": [ 3, 17 ]
+        }
+      },
+      {
+        "coin_button@common_buttons_astral.main_button": {
+          "size": [ 50, 17 ],
+          "$button_content": "cosmetics_astral.balance_label",
+          "$pressed_button_name": "button.coin_wallet"
+        }
+      }
+    ]
+  },
+
+  "purchase_label": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "coin_icon": {
+          "type": "image",
+          "texture": "textures/ui/MCoin",
+          "offset": [ 3, 0 ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "size": [ 11, 11 ]
+        }
+      },
+      {
+        "coin_label@common_buttons_astral.button_label": {
+          "layer": 2,
+          "text": "#purchase_with_coins_button_text",
+          "color": "$coin_color",
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_name": "#purchase_with_coins_button_text",
+              "binding_condition": "always_when_visible"
+            },
+            {
+              "binding_name": "(not #coin_purchase_in_progress)",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "balance_label": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      {
+        "coin_icon": {
+          "type": "image",
+          "texture": "textures/ui/MCoin",
+          "offset": [ 3, 0 ],
+          "anchor_from": "left_middle",
+          "anchor_to": "left_middle",
+          "size": [ 11, 11 ]
+        }
+      },
+      {
+        "coin_label@common_buttons_astral.button_label": {
+          "layer": 2,
+          "text": "#coin_balance",
+          "bindings": [
+            {
+              "binding_type": "global",
+              "binding_name": "#coin_balance",
+              "binding_condition": "always_when_visible"
+            },
+            {
+              "binding_name": "(not #coin_purchase_in_progress)",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "color": "$coin_color"
+        }
+      },
+      { 
+        "astral_add_icon@astral_textures_common.astral_add_icon": {
+          "offset": [ 1.5, 0 ],
+          "anchor_from": "right_middle",
+          "anchor_to": "right_middle"
+        }
+      }
+    ]
+  },
+
+  "cosmetics_panel": {
+    "type": "panel",
+    "controls": [
+      { "text_panel@start_astral.text_panel": { } },
+      { "main_panel@cosmetics_astral.main_panel": { } }
+    ]
+  }
+}

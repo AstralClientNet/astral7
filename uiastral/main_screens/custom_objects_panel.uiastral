@@ -1,0 +1,11 @@
+{
+  "namespace": "custom_objects_panel",
+
+  "custom_objects_main_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "controls": [
+      { "astral_title_bottom_right@astral_textures_common.astral_title_bottom_right": { } }
+    ]
+  }
+}

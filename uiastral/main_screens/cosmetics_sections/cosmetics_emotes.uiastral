@@ -1,0 +1,154 @@
+{
+  "namespace": "cosmetics_emotes_astral",
+
+  "emotes_section": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "bindings": [
+      {
+        "binding_name": "#is_emotes_section_visible",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "emotes_slot_grid@persona.emotes_slot_grid": {
+          "size": [ "100%", "100%c" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "grid_item_template": "cosmetics_emotes_astral.emote_slot_grid_item"
+        }
+      }
+    ]
+  },
+
+  "emote_slot_grid_item@cosmetics_create_astral.persona_subcategory_button": {
+    "$content_label_image_binding_type": "collection",
+    "$content_label_image_collection_name": "$subcategory_collection_name",
+    "$content_label_binding_name": "#persona_emote_slot_name",
+    "$content_image_binding_name": "#persona_emote_image_name",
+    "$content_label_image_file_system_binding_type": "collection",
+    "$content_image_binding_system": "#persona_emote_image_file_system",
+    "$content_image_is_dynamic": true,
+
+    "$pressed_button_name": "button.emote_slot_selected",
+    "$hover_button_name": "button.emote_slot_button_hovered",
+    "$button_content": "persona.emotes_slot_button_content"
+  },
+
+  "emotes_grid_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "bindings": [
+      {
+        "binding_name": "#is_emote_offer_list_visible",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "emotes_piece_offer_grid@persona.persona_piece_offer_grid": {
+          "size": [ "100%", "100%c" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "grid_item_template": "cosmetics_astral.cosmetics_piece_offer",
+          "$pressed_button_function": "button.select_emote",
+          "$piece_grid_dimension_binding": "#emote_offer_count",
+          "$persona_piece_prefix": "emote",
+          "$persona_piece_collection_name": "emote_collection",
+          "$piece_grid_visible_binding_type": "global",
+          "$piece_grid_visible_binding_name": "#is_emote_offer_list_visible",
+          "$button_content": "persona.piece_offer_button_content"
+        }
+      }
+    ]
+  },
+
+  "play_again_button@common_buttons_astral.main_button": {
+    "size": [ 22, 17 ],
+    "offset": [ -20, 30 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "$pressed_button_name": "button.play_emote_again",
+    "$button_content": "astral_textures_common.astral_play_icon",
+    "bindings": [
+      {
+        "binding_name": "#is_play_again_button_enabled",
+        "binding_name_override": "#visible"
+      }
+    ]
+  },
+
+  "emotes_right_panel": {
+    "type": "panel",
+    "bindings": [
+      {
+        "binding_name": "#is_emote_offer_list_visible",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      { 
+        "none_button@cosmetics_astral.none_button": {
+          "size": [ 22, 17 ],
+          "offset": [ -20, 10 ],
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "$pressed_button_name": "button.remove_emote",
+          "bindings": [
+            {
+              "binding_name": "#is_none_emote_option_enabled",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      },
+      { "play_again_button@cosmetics_emotes_astral.play_again_button": { } },
+      {
+        "object_name_text": {
+          "type": "stack_panel",
+          "orientation": "horizontal",
+          "size": [ "100%c", 11 ],
+          "anchor_from": "bottom_middle",
+          "anchor_to": "bottom_middle",
+          "offset": [ 0, -20 ],
+          "controls": [
+            { 
+              "name_text@start_astral.astral_text": {
+                "size": [ "default", 11 ],
+                "text": "#right_panel_title",
+                "font_scale_factor": 1.0,
+                "bindings": [
+                  {
+                    "binding_name": "#right_panel_title"
+                  }
+                ]
+              }
+            },
+            { 
+              "separator_text@start_astral.astral_text": {
+                "size": [ "default", 11 ],
+                "text": " - ",
+                "font_scale_factor": 1.0
+              }
+            },
+            { 
+              "rarity_text@start_astral.astral_text": {
+                "size": [ "default", 11 ],
+                "text": "#right_panel_title_rarity",
+                "font_scale_factor": 1.0,
+                "bindings": [
+                  {
+                    "binding_name": "#right_panel_title_rarity"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "namespace": "start_astral",
+
+  /*//// Text Panel ////*/
+
+  "astral_text": {
+    "type": "label",
+    "font_type": "smooth",
+    "size": [ "default", 10 ],
+    "color": [ 0.5, 0.5, 0.5 ],
+    "shadow": false,
+    "font_scale_factor": 1.0,
+    "text": "Astral Client (testing)"
+  },
+
+  "copyright_text@start_astral.astral_text": {
+    "text": "Copyright Mojang AB. Do not distribute!"
+  },
+
+  "text_panel": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "offset": [ 0, -8 ],
+    "size": [ "100%-20px", 10 ],
+    "layer": 1,
+    "controls": [
+      { "minecraft_text@start_astral.astral_text": { } },
+      { "fill": { "type": "panel", "size": [ "fill", 10 ] } },
+      { "copyright_text@start_astral.copyright_text": { } }
+    ]
+  },
+
+  /*//// Bottom Buttons ////*/
+
+  "profile_button@common_buttons_astral.main_button": {
+    "size": [ 20, 20 ],
+    "$pressed_button_name": "button.to_profile_screen",
+    "$button_content": "astral_textures_common.astral_cosmetics_icon"
+  },
+
+  "settings_button@common_buttons_astral.main_button": {
+    "size": [ 20, 20 ],
+    "$pressed_button_name": "button.menu_settings",
+    "$button_content": "astral_textures_common.astral_options_icon"
+  },
+
+  "store_button@common_buttons_astral.main_button": {
+    "size": [ 20, 20 ],
+    "$pressed_button_name": "button.menu_store",
+    "$button_content": "astral_textures_common.astral_store_icon"
+  }, 
+
+  "exit_button@common_buttons_astral.main_button": {
+    "size": [ 20, 20 ],
+    "anchor_from": "top_right",
+    "anchor_to": "top_right",
+    "offset": [ -7, 9 ],
+    "$pressed_button_name": "button.menu_exit",
+    "$button_content": "astral_textures_common.astral_close_icon"
+  },
+
+  "bottom_buttons": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "anchor_from": "bottom_middle",
+    "anchor_to": "bottom_middle",
+    "size": [ "100%c", 20 ],
+    "offset": [ 0, -11 ],
+    "controls": [
+      { "profile_button@start_astral.profile_button": { } },
+      { "panel_0": { "type": "panel", "size": [ 3, 20 ] } },
+      { "settings_button@start_astral.settings_button": { } },
+      { "panel_1": { "type": "panel", "size": [ 3, 20 ] } },
+      { "store_button@start_astral.store_button": { } }
+    ]
+  },
+
+  /*//// User Feedback Button ////*/
+
+  "user_details_panel": {
+    "type": "panel",
+    "controls": [
+      {
+        "logged_text@start_astral.astral_text": {
+          "font_scale_factor": 0.75,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 1 ],
+          "color": [ 0.8, 0.8, 0.8 ],
+          "text": "logged in as"
+        }
+      },
+      {
+        "gamertag_text@start_astral.astral_text": {
+          "font_scale_factor": 0.9,
+          "anchor_from": "top_middle",
+          "anchor_to": "top_middle",
+          "offset": [ 0, 8 ],
+          "color": [ 0.8, 0.8, 0.8 ],
+          "text": "#gamertag_label",
+          "bindings": [
+            {
+              "binding_name": "#gamertag_label"
+            }
+          ]
+        }
+      },
+      {
+        "gamerpic": {
+          "type": "image",
+          "size": [ 12, 12 ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 4, 3.5 ],
+          "layer": 1,
+          "bindings": [
+            {
+              "binding_name": "#gamerpic_texture_path",
+              "binding_name_override": "#texture"
+            },
+            {
+              "binding_name": "#gamerpic_texture_location_type",
+              "binding_name_override": "#texture_file_system"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "feedback_button@common_buttons_astral.main_button": {
+    "size": [ 100, 20 ],
+    "anchor_from": "top_left",
+    "anchor_to": "top_left",
+    "offset": [ 8, 9 ],
+    "$pressed_button_name": "button.menu_open_uri",
+    "$button_content": "start_astral.user_details_panel",
+    "property_bag": {
+      "#hyperlink": "https://aka.ms/minecraftfb"
+    }
+  },
+
+  /*//// Main Buttons and Title ////*/
+
+  "main_buttons_and_title": {
+    "type": "panel",
+    "controls": [
+      { "astral_title@astral_textures_common.astral_title": { "offset": [ 0, -21 ] } },
+      { "astral_logo@astral_textures_common.astral_logo": { "offset": [ 0, -67 ] } },
+      {
+        "play_button@common_buttons_astral.main_button": {
+          "size": [ 202, 20 ],
+          "offset": [ 0, 10 ],
+          "$pressed_button_name": "button.menu_play",
+          "$button_text": "P L A Y  G A M E"
+        }
+      },
+      {
+        "achievements_button@common_buttons_astral.main_button": {
+          "size": [ 202, 20 ],
+          "offset": [ 0, 33 ],
+          "$pressed_button_name": "button.menu_achievements",
+          "$button_text": "A C H I E V E M E N T S"
+        }
+      }
+    ]
+  },
+
+  /*//// Screen ////*/
+
+  "center_screen": {
+    "type": "panel",
+    "controls": [
+      { "text_panel@start_astral.text_panel": { } },
+      { "feedback_button@start_astral.feedback_button": { } },
+      { "main_buttons_and_title@start_astral.main_buttons_and_title": { } },
+      { "exit_button@start_astral.exit_button": { } },
+      { "bottom_buttons@start_astral.bottom_buttons": { } }
+    ]
+  },
+
+  "full_screen": {
+    "type": "panel",
+    "controls": [
+      
+    ]
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "namespace": "cosmetics_colors_astral",
+
+  "colors_top_buttons": {
+    "type": "stack_panel",
+    "orientation": "horizontal",
+    "size": [ 172, 17 ],
+    "controls": [
+      { "leave_button@cosmetics_astral.leave_button": { } },
+      { 
+        "panel_0": { 
+          "type": "panel",
+          "size": [ 3, 17 ]
+        }
+      },
+      { 
+        "panel_1": { 
+          "type": "panel",
+          "size": [ "fill", 17 ]
+        }
+      },
+      { 
+        "channel_selector_panel@cosmetics_colors_astral.channel_selector_panel": {
+          "bindings": [
+            {
+              "binding_name": "#other_channels",
+              "binding_name_override": "#visible"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "channel_selector_panel": {
+    "type": "panel",
+    "size": [ 97, 17 ],
+    "controls": [
+      {
+        "left_button@common_buttons_astral.main_button": {
+          "size": [ 22, 17 ],
+          "$button_text": "L",
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "$button_content": "astral_textures_common.astral_previous_icon",
+          "$pressed_button_name": "button.swap_color_channel_left",
+          "bindings": [
+            {
+              "binding_name": "#left_color_cycle_enabled",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_tab_left",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "global"
+            },
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "focused"
+            }
+          ]
+        }
+      },
+      {
+        "channel_title@start_astral.astral_text": {
+          "text": "#color_picker_title",
+          "layer": 4,
+          "bindings": [
+            {
+              "binding_name": "#color_picker_title"
+            }
+          ]
+        }
+      },
+      {
+        "right_button@common_buttons_astral.main_button": {
+          "size": [ 22, 17 ],
+          "$button_text": "R",
+          "anchor_from": "top_right",
+          "anchor_to": "top_right",
+          "$button_content": "astral_textures_common.astral_next_icon",
+          "$pressed_button_name": "button.swap_color_channel_right",
+          "bindings": [
+            {
+              "binding_name": "#right_color_cycle_enabled",
+              "binding_name_override": "#visible"
+            }
+          ],
+          "button_mappings": [
+            {
+              "from_button_id": "button.menu_tab_right",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "global"
+            },
+            {
+              "from_button_id": "button.menu_select",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "pressed"
+            },
+            {
+              "from_button_id": "button.menu_ok",
+              "to_button_id": "$pressed_button_name",
+              "mapping_type": "focused"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  
+  "color_panel": {
+    "type": "panel",
+    "size": [ "100%", "100%c" ],
+    "bindings": [
+      {
+        "binding_name": "#show_color_picker",
+        "binding_name_override": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "color_grid@persona.color_grid": {
+          "size": [ "100%", "100%c" ],
+          "anchor_from": "top_left",
+          "anchor_to": "top_left",
+          "offset": [ 0, 0 ],
+          "grid_item_template": "cosmetics_colors_astral.color_grid_item"
+        }
+      }
+    ]
+  },
+
+  "color_grid_item": {
+    "type": "panel",
+    "size": [ 25, 37 ],
+    "controls": [
+      {
+        "color_grid_button@persona.color_grid_item": {
+          "size": [ 22, 34 ],
+          "layer": 3,
+          "$button_content": "cosmetics_colors_astral.color_grid_icon",
+          "controls": [
+            { "default@common.empty_panel": {} },
+            {
+              "pressed@astral_textures_common.cosmetic_piece_selected": {
+                "layer": 9
+              }
+            },
+            {
+              "content@$button_content": {
+                "layer": 2
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "color_grid_icon": {
+    "type": "panel",
+    "controls": [
+      {
+        "color_grid_icon": {
+          "type": "image",
+          "layer": 4,
+          "size": [ "100% - 4px", "100% - 4px" ],
+          "texture": "textures/ui/White",
+          "bindings": [
+            {
+              "binding_name": "#current_panel_color",
+              "binding_name_override": "#color",
+              "binding_type": "collection",
+              "binding_collection_name": "color_collection"
+            }
+          ]
+        }
+      },
+      {
+        "cosmetic_piece_panel@astral_textures_common.cosmetic_piece_panel": {
+          "layer": 2,
+          "size": [ "100%", "100%" ]
+        }
+      },
+      {
+        "equipped@astral_textures_common.cosmetic_piece_equipped": {
+          "layer": 10,
+          "bindings": [
+            {
+              "binding_name": "#color_selected",
+              "binding_name_override": "#visible",
+              "binding_type": "collection",
+              "binding_collection_name": "color_collection"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

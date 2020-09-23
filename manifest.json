@@ -1,0 +1,51 @@
+{
+   "format_version" : 2,
+   "header" : {
+      "description" : "An all-in-one optimization client-resourcepack for MCBE.",
+      "name" : "§dAstral §9V7",
+      "uuid" : "315f9a78-bc0e-42ee-b10e-2b14a4e03623",
+      "version" : [ 6, 9, 0 ],
+      "min_engine_version" : [ 1, 16, 0 ]
+   },
+   "modules" : [
+      {
+         "description" : "Astral Client V7",
+         "type" : "resources",
+         "uuid" : "70992fa4-1c42-4464-9ece-cdaf9df0ef77",
+         "version" : [ 6, 9, 0 ]
+      }
+   ],
+   
+   "subpacks": [
+      {
+         "folder_name": "astralbcc",
+         "name": "Clear Bottom Chat UI + Astral GUI Textures",
+         "memory_tier": 1
+      },
+      {
+         "folder_name": "astralbc",
+         "name": "Bottom Chat UI + Astral GUI Textures",
+         "memory_tier": 1
+      },
+      {
+         "folder_name": "bottomchatclear",
+         "name": "Clear Bottom Chat UI",
+         "memory_tier": 1
+      },
+      {
+         "folder_name": "bottomchat",
+         "name": "Bottom Chat UI",
+         "memory_tier": 1
+      },
+      {
+         "folder_name": "astralgui",
+         "name": "Astral GUI Textures (Clear GUI + Dark Mode)",
+         "memory_tier": 1
+      },
+      {
+         "folder_name": "Nothing",
+         "name": "Nothing",
+         "memory_tier": 1
+      }
+   ]
+}
